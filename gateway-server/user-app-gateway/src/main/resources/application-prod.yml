@@ -1,0 +1,30 @@
+swagger:
+    show: false
+email:
+    send:
+        exception: true
+eureka:
+    instance:
+        prefer-ip-address: true
+        instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+        lease-renewal-interval-in-seconds: 30
+        lease-expiration-duration-in-seconds: 60
+        status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
+    client:
+        service-url:
+            defaultZone: http://${security.user.name}:${security.user.password}@server1:8761/eureka/,http://${security.user.name}:${security.user.password}@server2:8762/eureka/,http://${security.user.name}:${security.user.password}@server3:8763/eureka/
+        registry-fetch-interval-seconds: 30
+        healthcheck:
+            enabled: true
+spring:
+    redis:
+        host: r-wz9f3838259a2dc4.redis.rds.aliyuncs.com
+        port: 6379
+        password: HrYj3w4H@31BdasS4Dt3S
+        timeout: 10000
+oss:
+    accessKeyId: LTAIf4FsbF2QvPkQ
+    accessKeySecret: PlnlqqQNNU32g1nOgUjytzjOiKMGOy
+    endpoint: oss-cn-shenzhen-internal.aliyuncs.com
+    domain: static.hryjmall.com
+    backetName: hryj-prod

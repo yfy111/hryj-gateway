@@ -1,0 +1,37 @@
+server:
+    port: 8030
+    undertow:
+        io-threads: 4
+        worker-threads: 2000
+        buffer-size: 1024
+        direct-buffers: true
+    connection-timeout: 60000
+spring:
+    application:
+        name: user-app-gateway
+    profiles:
+        active: dev
+    http:
+        multipart:
+            enabled: true
+            max-file-size: 10MB
+            max-request-size: 10MB
+security:
+    basic:
+        enabled: true
+    user:
+        name: admin
+        password: hryj1866
+management:
+    security:
+        enabled: false
+endpoints:
+    sensitive: false
+feign:
+    hystrix:
+        enabled: false
+ribbon:
+    ReadTimeout: 50000
+    ConnectTimeout: 50000
+logging:
+    config: classpath:logback.xml
